@@ -1,0 +1,20 @@
+  .avatarUpload {
+
+    max-width: 553px;
+    height: 177px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--color-light-grey);
+    outline: var(--dashed-border-default);
+    border-radius: var(--border-radius-default);
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+
+    label {
+      cursor: pointer;
+    }
+  }

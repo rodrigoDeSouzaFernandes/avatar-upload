@@ -1,7 +1,11 @@
 @import './common.scss';
+@import '../Components/AvatarUpload/avatarUpload.scss';
 
+:root {
+  --color-light-grey: #F2F5F8;
+  --color-grey-default: #C7CDD3;
 
-// # variables
-// :root {
+  --border-radius-default: 8px;
 
-// }
+  --dashed-border-default: var(--color-grey-default) dashed 2px;
+}
