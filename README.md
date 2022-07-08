@@ -1,1 +1,3 @@
-# avatar-upload
+npm install
+
+npm run dev

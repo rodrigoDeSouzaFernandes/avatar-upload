@@ -1,0 +1,23 @@
+body {
+  margin: unset;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 2em;
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 4em 2em;
+  }
+}
