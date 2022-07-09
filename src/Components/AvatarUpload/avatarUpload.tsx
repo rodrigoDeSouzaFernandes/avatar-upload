@@ -6,7 +6,9 @@ import Crop from "../Crop";
 function AvatarUpload() {
   const { onDrop } = useAvatarUpload();
 
-  const { uploadFailed, file } = useContext(FileContext);
+  const { uploadFailed, file, croppedImage } = useContext(FileContext);
+
+  console.log(file);
 
   return (
     <section className="container">
@@ -17,8 +19,9 @@ function AvatarUpload() {
       ) : (
         <DropzoneDefault onDrop={onDrop} />
       )}
-
-      <img src={file?.src}/>
+      {croppedImage && (
+        <img style={{ "border-radius": "50%" }} src={croppedImage} />
+      )}
     </section>
   );
 }

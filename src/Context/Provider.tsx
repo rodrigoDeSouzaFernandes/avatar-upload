@@ -5,12 +5,15 @@ function Provider({ children }: PropsWithChildren) {
   const [file, setFile] = useState(null);
 
   const [uploadFailed, setUploadFailed] = useState(false);
+  const [croppedImage, setCroppedImage] = useState(null);
 
   const context = {
     file,
     setFile,
     uploadFailed,
-    setUploadFailed
+    setUploadFailed,
+    croppedImage,
+    setCroppedImage,
   };
 
   return (

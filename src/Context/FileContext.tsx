@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 interface ICustomFile extends File {
-  src:string
+  src: string;
 }
 
 interface IFileContext {
@@ -9,9 +9,9 @@ interface IFileContext {
   setFile: Function;
   uploadFailed: Boolean;
   setUploadFailed: Function;
-};
-
-
+  croppedImage: string | null;
+  setCroppedImage: Function;
+}
 
 const FileContext = createContext({} as IFileContext);
 

@@ -1,21 +1,32 @@
 import { X as CloseBtn } from "react-feather";
 
 import Cropper from "react-easy-crop";
-import React, { ChangeEvent, useCallback, useContext, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import yourImage from "../../logo.svg";
 import { Area } from "react-easy-crop";
 import FileContext from "../../Context/FileContext";
+
+import { teste } from "./utils/cropWithCanvas";
 
 function Crop() {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
+  const [croppedAreaState, setCroppedAreaState] = useState({});
 
-  const { file, setFile } = useContext(FileContext);
+  const { file, setFile, croppedImage, setCroppedImage } =
+    useContext(FileContext);
 
   const onCropComplete = useCallback(
     (croppedArea: Area, croppedAreaPixels: Area) => {
-      console.log(croppedArea, croppedAreaPixels);
+      console.log(croppedAreaPixels, croppedArea)
+      setCroppedAreaState(croppedAreaPixels);
     },
     []
   );
@@ -34,6 +45,13 @@ function Crop() {
   };
 
   const onClose = () => setFile(null);
+
+  const cropnow = () => {
+    if (file) {
+      const base64 = teste(file.src, croppedAreaState, zoom);
+      setCroppedImage(base64);
+    }
+  };
 
   return (
     <section className="crop">
@@ -74,7 +92,7 @@ function Crop() {
             value={rotation}
           />
         </div>
-        <button className="btnSave" onClick={() => {}}>
+        <button className="btnSave" onClick={cropnow}>
           Save
         </button>
       </div>
