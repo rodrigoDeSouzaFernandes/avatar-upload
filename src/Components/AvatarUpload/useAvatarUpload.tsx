@@ -1,20 +1,20 @@
-import { useCallback, useState } from "react";
-import { useDropzone } from "react-dropzone";
-
+import { useCallback, useContext } from "react";
+import FileContext from "../../Context/FileContext";
 
 function useAvatarUpload() {
+  const { file, setFile, setUploadFailed } = useContext(FileContext);
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    console.log(acceptedFiles);
+    if (acceptedFiles.length === 0) {
+      setUploadFailed(true);
+    } else {
+      const [uploadedFile] = acceptedFiles;
+      setFile(uploadedFile);
+    }
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive, isDragReject } =
-    useDropzone({ onDrop, accept: { "image/*": [] } });
-
   return {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragReject,
+    onDrop,
   };
 }
 

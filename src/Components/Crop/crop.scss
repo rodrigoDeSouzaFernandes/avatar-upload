@@ -1,0 +1,14 @@
+.crop {
+  @extend .base;
+  position: relative;
+
+  padding: 32px;
+
+  justify-content: start;
+}
+
+.avatar {
+  width: 113px;
+  height: 113px;
+  border-radius: 50%;
+}
