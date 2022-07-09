@@ -1,14 +1,17 @@
 import { X as CloseBtn } from "react-feather";
 
 import Cropper from "react-easy-crop";
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, { ChangeEvent, useCallback, useContext, useState } from "react";
 import yourImage from "../../logo.svg";
 import { Area } from "react-easy-crop";
+import FileContext from "../../Context/FileContext";
 
 function Crop() {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
+
+  const { setFile } = useContext(FileContext);
 
   const onCropComplete = useCallback(
     (croppedArea: Area, croppedAreaPixels: Area) => {
@@ -29,6 +32,8 @@ function Crop() {
     }
     setZoom(parseFloat(xzoom.toFixed(1)));
   };
+
+  const onClose = () => setFile(null);
 
   return (
     <section className="crop">
@@ -69,10 +74,13 @@ function Crop() {
             value={rotation}
           />
         </div>
-        <button className="btnSave">
+        <button className="btnSave" onClick={() => {}}>
           Save
         </button>
       </div>
+      <button className="closeBtn" onClick={onClose}>
+        <CloseBtn />
+      </button>
     </section>
   );
 }

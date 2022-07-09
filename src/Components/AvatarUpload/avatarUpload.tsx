@@ -6,12 +6,17 @@ import Crop from "../Crop";
 function AvatarUpload() {
   const { onDrop } = useAvatarUpload();
 
-  const { uploadFailed } = useContext(FileContext);
+  const { uploadFailed, file } = useContext(FileContext);
 
   return (
     <section className="container">
-      {uploadFailed ? <UploadFailed /> : <DropzoneDefault onDrop={onDrop} />}
-      <Crop/>
+      {uploadFailed ? (
+        <UploadFailed />
+      ) : file ? (
+        <Crop />
+      ) : (
+        <DropzoneDefault onDrop={onDrop} />
+      )}
     </section>
   );
 }

@@ -9,6 +9,7 @@ function useAvatarUpload() {
       setUploadFailed(true);
     } else {
       const [uploadedFile] = acceptedFiles;
+      console.log(uploadedFile)
       setFile(uploadedFile);
     }
   }, []);
