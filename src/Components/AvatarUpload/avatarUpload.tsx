@@ -1,3 +1,4 @@
+import { Image } from "react-feather";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
@@ -9,14 +10,22 @@ function AvatarUpload() {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({ onDrop, accept: { "image/*": [] } });
 
-  const dropzoneText = () => {
+  const DropzoneMessage = () => {
     if (isDragReject) {
       return <p>Arquivo não suportado</p>;
     }
     if (isDragActive) {
       return <p>Solte o arquivo aqui</p>;
     }
-    return <p>Arraste e solte sua imagem aqui, ou clique para selecioná-la</p>;
+    return (
+      <div className="defaultMessage">
+        <div>
+          <Image />
+          <p>Organization Logo</p>
+        </div>
+        <p>Arraste e solte sua imagem aqui, ou clique para selecioná-la</p>
+      </div>
+    );
   };
 
   return (
@@ -24,7 +33,7 @@ function AvatarUpload() {
       <div className="avatarUpload">
         <label {...getRootProps()} htmlFor="click">
           <input {...getInputProps()} id="click" />
-          {dropzoneText()}
+          <DropzoneMessage />
         </label>
       </div>
     </section>
