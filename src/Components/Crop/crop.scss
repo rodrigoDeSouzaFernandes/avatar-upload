@@ -12,3 +12,63 @@
   height: 113px;
   border-radius: 50%;
 }
+
+.cropper-container {
+  position: absolute;
+  top: calc(50% - 60px);
+  left: 32px;
+
+  .reactEasyCrop_Container {
+    height: 113px;
+    width: 113px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .reactEasyCrop_CropArea.reactEasyCrop_CropAreaRound.reactEasyCrop_CropAreaGrid {
+    color: transparent;
+  }
+
+
+}
+
+.cropSettings {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: calc(32px + 113px);
+  right: 32px;
+
+  height: calc(100% - 64px);
+
+  max-width: 280px;
+
+  padding-left: 10px;
+
+  gap: 5px;
+
+  .inputs {
+    label {
+      margin-bottom: 5px;
+    }
+
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-grey-3);
+    display: grid;
+  }
+
+  .btnSave {
+    background-color: var(--color-grey-5);
+    color: white;
+    border-radius: 16px;
+    border: none;
+    width: 109px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    align-self: flex-end;
+  }
+}
