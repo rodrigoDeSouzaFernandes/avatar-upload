@@ -1,4 +1,5 @@
 import { useCallback, useContext } from "react";
+import { Upload } from "react-feather";
 import FileContext from "../../Context/FileContext";
 
 function useAvatarUpload() {
@@ -9,7 +10,17 @@ function useAvatarUpload() {
       setUploadFailed(true);
     } else {
       const [uploadedFile] = acceptedFiles;
-      setFile(uploadedFile);
+      console.log(uploadedFile);
+
+      var asd = new FileReader();
+      asd.onload = function (e) {
+        setFile({
+          ...uploadedFile,
+          src: e.target?.result,
+        });
+      };
+      asd.readAsDataURL(uploadedFile);
+
     }
   }, []);
 

@@ -1,122 +1,140 @@
 .base {
-    max-width: 553px;
-    height: 177px;
-    background: var(--color-grey-1);
-    border-radius: var(--border-radius-default);
+  max-width: 553px;
+  height: 177px;
+  background: var(--color-grey-1);
+  border-radius: var(--border-radius-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.dropzone {
+  @extend .base;
+
+  outline: var(--dashed-border-default);
+  position: relative;
+  cursor: pointer;
+
+
+  label {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 30px;
+
+  }
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  grid-column: 2;
+
+  p {
+    max-width: 300px;
+  }
+}
+
+.defaultMessage {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  text-align: center;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    svg {
+      height: 13px;
+      width: 13px;
+      stroke: var(--color-grey-4);
+      stroke-width: 3px;
+    }
+
+    p {
+      color: var(--color-grey-4);
+      font-weight: 500;
+    }
+  }
+
+  p {
+    color: var(--color-grey-3);
+
+  }
+}
+
+.success {
+  color: rgb(65, 131, 65);
+}
+
+.failed {
+  color: var(--color-failed);
+}
+
+.uploadFailed {
+  @extend .base;
+
+  position: relative;
+
+
+  display: grid;
+  grid-template-areas:
+    'circle message'
+    'circle tryagain';
+
+  column-gap: 32px;
+  justify-content: start;
+  padding: 32px;
+
+  .failed {
+    grid-area: message;
+    align-self: end;
+    padding-bottom: 5px;
+    font-weight: 400;
+  }
+
+  .circle {
+    grid-area: circle;
+    width: 113px;
+    height: 113px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-  }
+    border-radius: 50%;
 
-  .dropzone {
-    @extend .base;
+    background-color: var(--color-grey-2);
 
-    outline: var(--dashed-border-default);
-    position: relative;
-    cursor: pointer;
-
-    label {
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 30px;
-
+    svg {
+      stroke: var(--color-grey-2);
+      fill: var(--color-grey-1);
     }
   }
 
-  .defaultMessage {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 14px;
-    text-align: center;
-
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-
-      svg {
-        height: 13px;
-        width: 13px;
-        stroke: var(--color-grey-4);
-        stroke-width: 3px;
-      }
-
-      p {
-        color: var(--color-grey-4);
-        font-weight: 500;
-      }
-    }
-
-    p {
-      color: var(--color-grey-3);
-
-    }
+  .tryAgain {
+    grid-area: tryagain;
+    justify-self: start;
+    align-self: start;
+    font-weight: 500;
+    text-decoration: underline;
+    background: none;
+    border: none;
   }
+}
 
-  .success {
-    color: rgb(65, 131, 65);
-  }
-
-  .failed {
-    color: var(--color-failed);
-  }
-
-  .uploadFailed {
-    @extend .base;
-
-    position: relative;
-
-
-    display: grid;
-    grid-template-areas:
-      'circle message'
-      'circle tryagain';
-
-    column-gap: 32px;
-    justify-content: start;
-    padding: 32px;
-
-    .failed {
-      grid-area: message;
-      align-self: end;
-      padding-bottom: 5px;
-      font-weight: 400;
-    }
-
-    .circle {
-      grid-area: circle;
-      width: 113px;
-      height: 113px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background-color: var(--color-grey-2);
-
-      svg {
-        stroke: var(--color-grey-2);
-        fill: var(--color-grey-1);
-      }
-    }
-
-    .tryAgain {
-      grid-area: tryagain;
-      justify-self: start;
-      align-self: start;
-      font-weight: 500;
-      text-decoration: underline;
-      background: none;
-      border: none;
-    }
-  }
+.profile {
+  border-radius: 50%;
+}
