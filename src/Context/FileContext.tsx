@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { createContext, LegacyRef } from "react";
+import AvatarEditor from "react-avatar-editor";
 
 interface ICustomFile extends File {
   src: string;
@@ -9,8 +10,13 @@ interface IFileContext {
   setFile: Function;
   uploadFailed: Boolean;
   setUploadFailed: Function;
-  croppedImage: string | null;
-  setCroppedImage: Function;
+  userProfilePic: string | undefined;
+  setUserProfilePic: Function;
+  editor: any;
+  setEditor: Function;
+  scaleValue: number;
+  setScaleValue: Function;
+  setEditorRef: LegacyRef<AvatarEditor>;
 }
 
 const FileContext = createContext({} as IFileContext);

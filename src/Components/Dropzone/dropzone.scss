@@ -16,20 +16,34 @@
   position: relative;
   cursor: pointer;
 
+
   label {
     cursor: pointer;
     width: 100%;
     height: 100%;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     padding: 10px 30px;
 
   }
 }
 
+.message {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  grid-column: 2;
+
+  p {
+    max-width: 300px;
+  }
+}
+
 .defaultMessage {
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -119,4 +133,8 @@
     background: none;
     border: none;
   }
+}
+
+.profile {
+  border-radius: 50%;
 }

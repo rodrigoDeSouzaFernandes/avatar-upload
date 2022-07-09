@@ -1,28 +1,36 @@
 import { Image } from "react-feather";
 import { useDropzone, DropzoneOptions } from "react-dropzone";
+import { useContext } from "react";
+import FileContext from "../../Context/FileContext";
 
 function DropzoneDefault({ onDrop }: DropzoneOptions) {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({ maxFiles: 1, onDrop, accept: { "image/*": [] } });
 
+  const { userProfilePic } = useContext(FileContext);
+
   const DropzoneMessage = () => {
     if (isDragReject) {
       return (
-        <p className="failed">
-          File not supported or you trying to upload more than one file
-        </p>
+        <div className="message">
+          <p className="failed">
+            File not supported or you're trying to upload more than one file
+          </p>
+        </div>
       );
     }
-    if (isDragActive) {
-      return <p className="success">Drop the image here</p>;
-    }
+
     return (
       <div className="defaultMessage">
         <div>
           <Image />
           <p>Organization Logo</p>
         </div>
-        <p>Drop the image here or click to browse.</p>
+        {isDragActive ? (
+          <p className="success">Drop the image here</p>
+        ) : (
+          <p>Drop the image here or click to browse.</p>
+        )}
       </div>
     );
   };
@@ -31,6 +39,7 @@ function DropzoneDefault({ onDrop }: DropzoneOptions) {
     <section className="dropzone">
       <label {...getRootProps()} htmlFor="click">
         <input {...getInputProps()} id="click" />
+        {userProfilePic && <img className="profile" src={userProfilePic} alt="Profile" />}
         <DropzoneMessage />
       </label>
     </section>

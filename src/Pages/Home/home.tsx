@@ -3,11 +3,7 @@ import React from "react";
 import AvatarUpload from "../../Components/AvatarUpload";
 
 const Home = () => {
-  return (
-    <div>
-      <AvatarUpload />
-    </div>
-  );
+  return <AvatarUpload />;
 };
 
 export default Home;

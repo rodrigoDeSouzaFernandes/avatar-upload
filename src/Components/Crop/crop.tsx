@@ -1,104 +1,97 @@
 import { X as CloseBtn } from "react-feather";
 
-import Cropper from "react-easy-crop";
-import React, {
-  ChangeEvent,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import yourImage from "../../logo.svg";
-import { Area } from "react-easy-crop";
+import { ChangeEvent, ChangeEventHandler, useContext, useState } from "react";
 import FileContext from "../../Context/FileContext";
 
-import { teste } from "./utils/cropWithCanvas";
+import AvatarEditor from "react-avatar-editor";
 
 function Crop() {
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
-  const [croppedAreaState, setCroppedAreaState] = useState({});
 
-  const { file, setFile, croppedImage, setCroppedImage } =
-    useContext(FileContext);
+  const {
+    file,
+    setFile,
+    editor,
+    scaleValue,
+    setScaleValue,
+    setEditorRef,
+    setUserProfilePic,
+  } = useContext(FileContext);
 
-  const onCropComplete = useCallback(
-    (croppedArea: Area, croppedAreaPixels: Area) => {
-      console.log(croppedAreaPixels, croppedArea)
-      setCroppedAreaState(croppedAreaPixels);
-    },
-    []
-  );
-
-  const handleChangeZoom = ({ target }: ChangeEvent<HTMLInputElement>) =>
-    setZoom(Number(target.value));
-
-  const handleChangeRotate = ({ target }: ChangeEvent<HTMLInputElement>) =>
+  const onRotationChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setRotation(Number(target.value));
-
-  const customZoom = (xzoom: Number) => {
-    if (xzoom > 3) {
-      return;
-    }
-    setZoom(parseFloat(xzoom.toFixed(1)));
   };
 
-  const onClose = () => setFile(null);
-
-  const cropnow = () => {
-    if (file) {
-      const base64 = teste(file.src, croppedAreaState, zoom);
-      setCroppedImage(base64);
-    }
+  const onClose = () => {
+    setFile(null);
   };
+
+  const onScaleChange = (scaleChangeEvent: ChangeEvent<HTMLInputElement>) => {
+    const scaleValue = parseFloat(scaleChangeEvent.target.value);
+    setScaleValue(scaleValue);
+  };
+
+  const onCrop = () => {
+    if (editor !== null) {
+      const url = editor.getImageScaledToCanvas().toDataURL();
+      setUserProfilePic(url);
+    }
+
+    onClose();
+  };
+
+  if (!file) {
+    return <></>;
+  }
 
   return (
     <section className="crop">
-      <div className="cropper-container">
-        <Cropper
-          cropShape="round"
-          cropSize={{ width: 113, height: 113 }}
-          image={file?.src}
-          crop={crop}
-          zoom={zoom}
-          rotation={rotation}
-          aspect={4 / 3}
-          onCropChange={setCrop}
-          onCropComplete={onCropComplete}
-          onZoomChange={customZoom}
+      <div>
+        <AvatarEditor
+          width={113}
+          height={113}
+          image={file.src}
+          border={0}
+          borderRadius={100}
+          scale={scaleValue}
+          rotate={rotation}
+          ref={setEditorRef}
+          className="cropCanvas"
         />
       </div>
       <div className="cropSettings">
         <div className="inputs">
-          <label>Zoom ({`${zoom}x`})</label>
+          <label>Zoom</label>
           <input
+            style={{ width: "100%" }}
             type="range"
+            value={scaleValue}
+            name="points"
             min="1"
-            max="3"
-            step="0.1"
-            onChange={handleChangeZoom}
-            value={zoom}
+            max="10"
+            onChange={onScaleChange}
           />
         </div>
         <div className="inputs">
-          <label>Rotate ({`${rotation}°`})</label>
+          <label>Rotate</label>
           <input
+            style={{ width: "100%" }}
             type="range"
+            value={rotation}
+            name="points"
             min="-180"
             max="180"
             step="5"
-            onChange={handleChangeRotate}
-            value={rotation}
+            onChange={onRotationChange}
           />
         </div>
-        <button className="btnSave" onClick={cropnow}>
+        <button onClick={onCrop} className="btnSave">
           Save
         </button>
+        <button className="closeBtn" onClick={onClose}>
+          <CloseBtn />
+        </button>
       </div>
-      <button className="closeBtn" onClick={onClose}>
-        <CloseBtn />
-      </button>
     </section>
   );
 }

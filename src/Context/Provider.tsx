@@ -6,14 +6,24 @@ function Provider({ children }: PropsWithChildren) {
 
   const [uploadFailed, setUploadFailed] = useState(false);
   const [croppedImage, setCroppedImage] = useState(null);
+  const [userProfilePic, setUserProfilePic] = useState("");
+  const [editor, setEditor] = useState(null);
+  const [scaleValue, setScaleValue] = useState(1);
+
+  const setEditorRef = (editor: any) => setEditor(editor);
 
   const context = {
     file,
     setFile,
     uploadFailed,
     setUploadFailed,
-    croppedImage,
-    setCroppedImage,
+    userProfilePic,
+    setUserProfilePic,
+    editor,
+    setEditor,
+    scaleValue,
+    setScaleValue,
+    setEditorRef,
   };
 
   return (

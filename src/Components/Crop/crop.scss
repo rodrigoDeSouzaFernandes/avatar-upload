@@ -6,6 +6,9 @@
 
   justify-content: start;
 }
+.cropCanvas {
+  border-radius: 50%;
+}
 
 .avatar {
   width: 113px;
@@ -17,31 +20,13 @@
   position: absolute;
   top: calc(50% - 60px);
   left: 32px;
-
-
-  .reactEasyCrop_Container {
-    height: 113px;
-    width: 113px;
-    overflow: hidden;
-    border-radius: 50%;
-  }
-
-  .reactEasyCrop_CropArea.reactEasyCrop_CropAreaRound.reactEasyCrop_CropAreaGrid {
-    color: transparent;
-  }
-
-
 }
 
 .cropSettings {
-  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  left: calc(32px + 113px);
-  right: 32px;
-
-  height: calc(100% - 64px);
-
   max-width: 280px;
 
   padding-left: 10px;
