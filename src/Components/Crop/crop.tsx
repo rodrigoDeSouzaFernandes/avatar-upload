@@ -11,7 +11,7 @@ function Crop() {
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
 
-  const { setFile } = useContext(FileContext);
+  const { file, setFile } = useContext(FileContext);
 
   const onCropComplete = useCallback(
     (croppedArea: Area, croppedAreaPixels: Area) => {
@@ -41,7 +41,7 @@ function Crop() {
         <Cropper
           cropShape="round"
           cropSize={{ width: 113, height: 113 }}
-          image={yourImage}
+          image={file?.src}
           crop={crop}
           zoom={zoom}
           rotation={rotation}

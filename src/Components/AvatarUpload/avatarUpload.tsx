@@ -17,6 +17,8 @@ function AvatarUpload() {
       ) : (
         <DropzoneDefault onDrop={onDrop} />
       )}
+
+      <img src={file?.src}/>
     </section>
   );
 }
