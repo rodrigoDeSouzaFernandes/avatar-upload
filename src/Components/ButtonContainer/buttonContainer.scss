@@ -1,0 +1,24 @@
+.button-container {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  justify-content: center;
+  max-width: 553px;
+  margin: auto;
+}
+
+.button-remove {
+  @extend .downloadBtn;
+
+  background-color: var(--color-failed);
+
+  border-radius: var(--border-radius-default);
+
+
+  &:hover {
+    color: var(--color-failed);
+    background: white;
+    border: 2px solid var(--color-failed);
+  }
+}
