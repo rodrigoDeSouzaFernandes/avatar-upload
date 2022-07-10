@@ -1,13 +1,16 @@
 import { Image } from "react-feather";
-import { useDropzone, DropzoneOptions } from "react-dropzone";
+import { useDropzone } from "react-dropzone";
 import { useContext } from "react";
 import FileContext from "../../Context/FileContext";
+import useDragAndDrop from "./useDragAndDrop";
 
-function DropzoneDefault({ onDrop }: DropzoneOptions) {
+function DragAndDrop() {
+  const { onDrop } = useDragAndDrop();
+
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({ maxFiles: 1, onDrop, accept: { "image/*": [] } });
 
-  const { userProfilePic } = useContext(FileContext);
+  const { profilePic } = useContext(FileContext);
 
   const DropzoneMessage = () => {
     if (isDragReject) {
@@ -39,11 +42,13 @@ function DropzoneDefault({ onDrop }: DropzoneOptions) {
     <section className="dropzone">
       <label {...getRootProps()} htmlFor="click">
         <input {...getInputProps()} id="click" />
-        {userProfilePic && <img className="profile" src={userProfilePic} alt="Profile" />}
+        {profilePic && (
+          <img className="profile" src={profilePic} alt="Profile image" />
+        )}
         <DropzoneMessage />
       </label>
     </section>
   );
 }
 
-export default DropzoneDefault;
+export default DragAndDrop;

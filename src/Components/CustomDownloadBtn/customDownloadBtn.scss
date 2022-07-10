@@ -1,0 +1,24 @@
+.downloadBtnContainer {
+
+  max-width: 553px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+
+  .downloadBtn {
+    background-color: #0a66c2;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: var(--border-radius-default);
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: .3s;
+
+    &:hover {
+      color: #0a66c2;
+      background: white;
+      border: 2px solid #0a66c2;
+    }
+  }
+}

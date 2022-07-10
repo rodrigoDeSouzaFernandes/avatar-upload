@@ -1,28 +1,40 @@
-import React, { useState, useEffect, PropsWithChildren } from "react";
+import React, {
+  useState,
+  useEffect,
+  PropsWithChildren,
+  Ref,
+  SetStateAction,
+  LegacyRef,
+  HtmlHTMLAttributes,
+  RefAttributes,
+} from "react";
+import AvatarEditor from "react-avatar-editor";
 import FileContext from "./FileContext";
 
 function Provider({ children }: PropsWithChildren) {
   const [file, setFile] = useState(null);
 
-  const [uploadFailed, setUploadFailed] = useState(false);
-  const [croppedImage, setCroppedImage] = useState(null);
-  const [userProfilePic, setUserProfilePic] = useState("");
-  const [editor, setEditor] = useState(null);
-  const [scaleValue, setScaleValue] = useState(1);
+  const [profilePic, setProfilePic] = useState("");
+  const [imageCroppedOriginalSize, setImageCroppedOriginalSize] = useState("");
 
-  const setEditorRef = (editor: any) => setEditor(editor);
+  const [uploadFailed, setUploadFailed] = useState(false);
+  const [editor, setEditor] = useState(null);
+
+  const setEditorRef = (editor: any): void => {
+    setEditor(editor);
+  };
 
   const context = {
     file,
     setFile,
     uploadFailed,
     setUploadFailed,
-    userProfilePic,
-    setUserProfilePic,
+    profilePic,
+    setProfilePic,
+    imageCroppedOriginalSize,
+    setImageCroppedOriginalSize,
     editor,
     setEditor,
-    scaleValue,
-    setScaleValue,
     setEditorRef,
   };
 

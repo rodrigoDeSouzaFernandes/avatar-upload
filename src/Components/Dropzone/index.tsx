@@ -1,7 +1,7 @@
-import DropzoneDefault from "./dropzoneDefault";
+import DragAndDrop from "./dragAndDrop";
 import UploadFailed from "./uploadFailed";
 
 export {
-  DropzoneDefault,
+  DragAndDrop,
   UploadFailed,
 };
