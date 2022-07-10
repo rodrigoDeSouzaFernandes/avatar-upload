@@ -1,14 +1,18 @@
-import React, { useState, useEffect, PropsWithChildren } from "react";
+import React, {
+  useState,
+  useEffect,
+  PropsWithChildren,
+  Ref,
+  SetStateAction,
+} from "react";
 import FileContext from "./FileContext";
 
 function Provider({ children }: PropsWithChildren) {
   const [file, setFile] = useState(null);
 
   const [uploadFailed, setUploadFailed] = useState(false);
-  const [croppedImage, setCroppedImage] = useState(null);
   const [userProfilePic, setUserProfilePic] = useState("");
   const [editor, setEditor] = useState(null);
-  const [scaleValue, setScaleValue] = useState(1);
 
   const setEditorRef = (editor: any) => setEditor(editor);
 
@@ -21,8 +25,6 @@ function Provider({ children }: PropsWithChildren) {
     setUserProfilePic,
     editor,
     setEditor,
-    scaleValue,
-    setScaleValue,
     setEditorRef,
   };
 

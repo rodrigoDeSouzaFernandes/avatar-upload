@@ -14,8 +14,6 @@ interface IFileContext {
   setUserProfilePic: Function;
   editor: any;
   setEditor: Function;
-  scaleValue: number;
-  setScaleValue: Function;
   setEditorRef: LegacyRef<AvatarEditor>;
 }
 
