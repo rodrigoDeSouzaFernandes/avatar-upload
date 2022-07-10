@@ -1,9 +1,9 @@
-import { LegacyRef, Ref, SetStateAction } from "react";
+import { LegacyRef } from "react";
 import AvatarEditor from "react-avatar-editor";
 
 export interface IUseCrop {
   setFile: Function;
-  editor: any;
+  editor: AvatarEditor | null;
   setUserProfilePic: Function;
 }
 
