@@ -4,7 +4,11 @@ import React, {
   PropsWithChildren,
   Ref,
   SetStateAction,
+  LegacyRef,
+  HtmlHTMLAttributes,
+  RefAttributes,
 } from "react";
+import AvatarEditor from "react-avatar-editor";
 import FileContext from "./FileContext";
 
 function Provider({ children }: PropsWithChildren) {
@@ -14,7 +18,9 @@ function Provider({ children }: PropsWithChildren) {
   const [userProfilePic, setUserProfilePic] = useState("");
   const [editor, setEditor] = useState(null);
 
-  const setEditorRef = (editor: any) => setEditor(editor);
+  const setEditorRef = (editor: any): void => {
+    setEditor(editor);
+  };
 
   const context = {
     file,

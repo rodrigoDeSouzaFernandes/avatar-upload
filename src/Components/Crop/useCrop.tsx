@@ -1,10 +1,6 @@
 import { ChangeEvent, useState } from "react";
+import { IUseCrop } from "../../types/uploadFileInterfaces";
 
-interface IUseCrop {
-  setFile: Function;
-  editor: any;
-  setUserProfilePic: Function;
-}
 
 function useCrop({ setFile, editor, setUserProfilePic }: IUseCrop) {
   const [rotation, setRotation] = useState(0);

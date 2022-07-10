@@ -31,6 +31,7 @@ function Crop() {
     <section className="crop">
       <div>
         <AvatarEditor
+          className="cropCanvas"
           width={113}
           height={113}
           image={file.src}
@@ -39,7 +40,6 @@ function Crop() {
           scale={scaleValue}
           rotate={rotation}
           ref={setEditorRef}
-          className="cropCanvas"
         />
       </div>
       <div className="cropSettings">
