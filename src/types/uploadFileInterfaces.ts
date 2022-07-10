@@ -4,7 +4,8 @@ import AvatarEditor from "react-avatar-editor";
 export interface IUseCrop {
   setFile: Function;
   editor: AvatarEditor | null;
-  setUserProfilePic: Function;
+  setProfilePic: Function;
+  setImageCroppedOriginalSize: Function;
 }
 
 interface ICustomFile extends File {
@@ -16,11 +17,13 @@ export interface IFileContext {
   setFile: Function;
   uploadFailed: Boolean;
   setUploadFailed: Function;
-  userProfilePic: string | undefined;
-  setUserProfilePic: Function;
+  profilePic: string | undefined;
+  setProfilePic: Function;
   editor: AvatarEditor | null;
   setEditor: Function;
   setEditorRef: LegacyRef<AvatarEditor>;
+  setImageCroppedOriginalSize: Function;
+  imageCroppedOriginalSize: string
 }
 
 

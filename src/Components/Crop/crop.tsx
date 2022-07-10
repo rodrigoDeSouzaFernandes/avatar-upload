@@ -7,7 +7,7 @@ import AvatarEditor from "react-avatar-editor";
 import useCrop from "./useCrop";
 
 function Crop() {
-  const { file, setFile, editor, setEditorRef, setUserProfilePic } =
+  const { file, setFile, editor, setEditorRef, setProfilePic, setImageCroppedOriginalSize } =
     useContext(FileContext);
 
   const {
@@ -20,7 +20,8 @@ function Crop() {
   } = useCrop({
     setFile,
     editor,
-    setUserProfilePic,
+    setProfilePic,
+    setImageCroppedOriginalSize
   });
 
   if (!file) {

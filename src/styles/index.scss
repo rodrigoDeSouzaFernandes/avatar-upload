@@ -3,6 +3,9 @@
 @import './common.scss';
 @import '../Components/Dropzone/dropzone.scss';
 @import '../Components/Crop/crop.scss';
+@import '../Components/CustomDownloadBtn/customDownloadBtn.scss';
+
+@import '../Pages/Home/home.scss';
 
 :root {
   --color-grey-1: #F2F5F8;

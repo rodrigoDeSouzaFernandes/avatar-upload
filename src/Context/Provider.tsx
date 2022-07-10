@@ -14,8 +14,10 @@ import FileContext from "./FileContext";
 function Provider({ children }: PropsWithChildren) {
   const [file, setFile] = useState(null);
 
+  const [profilePic, setProfilePic] = useState("");
+  const [imageCroppedOriginalSize, setImageCroppedOriginalSize] = useState("");
+
   const [uploadFailed, setUploadFailed] = useState(false);
-  const [userProfilePic, setUserProfilePic] = useState("");
   const [editor, setEditor] = useState(null);
 
   const setEditorRef = (editor: any): void => {
@@ -27,8 +29,10 @@ function Provider({ children }: PropsWithChildren) {
     setFile,
     uploadFailed,
     setUploadFailed,
-    userProfilePic,
-    setUserProfilePic,
+    profilePic,
+    setProfilePic,
+    imageCroppedOriginalSize,
+    setImageCroppedOriginalSize,
     editor,
     setEditor,
     setEditorRef,

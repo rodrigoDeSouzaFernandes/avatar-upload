@@ -1,8 +1,12 @@
 import { ChangeEvent, useState } from "react";
 import { IUseCrop } from "../../types/uploadFileInterfaces";
 
-
-function useCrop({ setFile, editor, setUserProfilePic }: IUseCrop) {
+function useCrop({
+  setFile,
+  editor,
+  setProfilePic,
+  setImageCroppedOriginalSize,
+}: IUseCrop) {
   const [rotation, setRotation] = useState(0);
   const [scaleValue, setScaleValue] = useState(1);
 
@@ -22,7 +26,10 @@ function useCrop({ setFile, editor, setUserProfilePic }: IUseCrop) {
   const onCrop = () => {
     if (editor !== null) {
       const url = editor.getImageScaledToCanvas().toDataURL();
-      setUserProfilePic(url);
+      setProfilePic(url);
+
+      const originalSizeUrl = editor.getImage().toDataURL();
+      setImageCroppedOriginalSize(originalSizeUrl);
     }
 
     onClose();

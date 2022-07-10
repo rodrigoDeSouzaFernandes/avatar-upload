@@ -10,7 +10,7 @@ function DragAndDrop() {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({ maxFiles: 1, onDrop, accept: { "image/*": [] } });
 
-  const { userProfilePic } = useContext(FileContext);
+  const { profilePic } = useContext(FileContext);
 
   const DropzoneMessage = () => {
     if (isDragReject) {
@@ -42,8 +42,8 @@ function DragAndDrop() {
     <section className="dropzone">
       <label {...getRootProps()} htmlFor="click">
         <input {...getInputProps()} id="click" />
-        {userProfilePic && (
-          <img className="profile" src={userProfilePic} alt="Profile" />
+        {profilePic && (
+          <img className="profile" src={profilePic} alt="Profile image" />
         )}
         <DropzoneMessage />
       </label>
