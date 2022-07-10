@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 import { IMAGE1, IMAGE2, NOT_AN_IMAGE } from '../utils/mockImages'
 
 describe('When loading the page', () => {
@@ -146,7 +148,7 @@ describe('When trying to upload a multiple files, should give an error', () => {
   })
 })
 
-describe.only("When upload is successful", () => {
+describe("When upload is successful", () => {
 
   beforeEach(() => {
     cy.visit('/')
@@ -177,7 +179,65 @@ describe.only("When upload is successful", () => {
     saveButton.should('exist');
     saveButton.click();
 
-    const imageCropped = cy.get('[data-testid="profile"]');
-    imageCropped.should('be.visible')
+    const avatarImage = cy.get('[data-testid="avatar"]');
+    avatarImage.should('be.visible')
+  })
+})
+
+describe("Testing Delete image button", () => {
+  beforeEach(() => {
+    cy.visit('/')
+
+    const fileUploadInput = cy.get('[data-testid="file-upload"]');
+    fileUploadInput.should("exist")
+    fileUploadInput.attachFile(IMAGE2);
+
+    const saveButton = cy.get('[data-testid="save-btn"]');
+    saveButton.click();
+  })
+
+  it('should be in the document', () => {
+    const deleteImageButton = cy.get('[data-testid="button-remove"]');
+    deleteImageButton.should('exist')
+    deleteImageButton.should('be.visible')
+  })
+
+  it('should remove the avatar image', () => {
+    const deleteImageButton = cy.get('[data-testid="button-remove"]');
+    deleteImageButton.should('exist')
+    deleteImageButton.click();
+
+    const avatarImage = cy.get('[data-testid="avatar"]');
+    avatarImage.should('not.exist')
+
+    cy.get('[data-testid="button-remove"]').should('not.exist');
+  })
+})
+
+describe.only("Testing download button", () => {
+  beforeEach(() => {
+    cy.visit('/')
+
+    const fileUploadInput = cy.get('[data-testid="file-upload"]');
+    fileUploadInput.should("exist")
+    fileUploadInput.attachFile(IMAGE1);
+
+    const saveButton = cy.get('[data-testid="save-btn"]');
+    saveButton.click();
+  })
+
+  it('should be in the document', () => {
+    const donwloadImageButton = cy.get('[data-testid="button-download"]');
+    donwloadImageButton.should('exist');
+    donwloadImageButton.should('be.visible');
+  })
+
+  it('should donwload the image', () => {
+    const donwloadImageButton = cy.get('[data-testid="button-download"]');
+
+    cy.task('deleteFolder', 'cypress/downloads' )
+    // donwloadImageButton.click();
+
+    // cy.readFile('cypress/downloads/avatar.png')
   })
 })

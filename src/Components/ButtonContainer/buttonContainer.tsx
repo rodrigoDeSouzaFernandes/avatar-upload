@@ -19,11 +19,15 @@ function ButtonContainer() {
       <div className="button-container">
         <CustomDownloadBtn
           imageCroppedOriginalSize={imageCroppedOriginalSize}
-          fileName="profilePic"
+          fileName="avatar"
         >
           Download image
         </CustomDownloadBtn>
-        <button className="button-remove" onClick={onDelete}>
+        <button
+          className="button-remove"
+          data-testid="button-remove"
+          onClick={onDelete}
+        >
           Delete avatar
         </button>
       </div>

@@ -10,6 +10,7 @@ function CustomDownloadBtn({
       className="downloadBtn"
       href={imageCroppedOriginalSize}
       download={fileName}
+      data-testid="button-download"
     >
       {children}
     </a>
