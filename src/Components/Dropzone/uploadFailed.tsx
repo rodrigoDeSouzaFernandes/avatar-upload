@@ -14,11 +14,21 @@ function UploadFailed() {
       <div className="circle">
         <AlertCircle />
       </div>
-      <p className="failed">Sorry, the upload failed.</p>
-      <button className="tryAgain" onClick={handleClose}>
+      <p className="failed" data-testid="failed-message">
+        Sorry, the upload failed.
+      </p>
+      <button
+        className="try-again"
+        data-testid="try-again"
+        onClick={handleClose}
+      >
         Try Again
       </button>
-      <button className="closeBtn" onClick={handleClose}>
+      <button
+        className="close-btn"
+        data-testid="close-btn"
+        onClick={handleClose}
+      >
         <CloseBtn />
       </button>
     </section>

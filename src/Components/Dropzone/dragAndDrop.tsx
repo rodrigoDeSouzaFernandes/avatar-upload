@@ -10,7 +10,7 @@ function DragAndDrop() {
   const { getRootProps, getInputProps, isDragActive, isDragReject } =
     useDropzone({ maxFiles: 1, onDrop, accept: { "image/*": [] } });
 
-  const { profilePic } = useContext(FileContext);
+  const { avatar } = useContext(FileContext);
 
   const DropzoneMessage = () => {
     if (isDragReject) {
@@ -24,7 +24,7 @@ function DragAndDrop() {
     }
 
     return (
-      <div className="defaultMessage">
+      <div className="default-message" data-testid="default-message">
         <div>
           <Image />
           <p>Organization Logo</p>
@@ -39,11 +39,16 @@ function DragAndDrop() {
   };
 
   return (
-    <section className="dropzone">
-      <label {...getRootProps()} htmlFor="click">
-        <input {...getInputProps()} id="click" />
-        {profilePic && (
-          <img className="profile" src={profilePic} alt="Profile image" />
+    <section className="dropzone" data-testid="dropzone">
+      <label {...getRootProps()} htmlFor="upload">
+        <input {...getInputProps()} id="upload" data-testid="file-upload" />
+        {avatar && (
+          <img
+            className="avatar"
+            data-testid="avatar"
+            src={avatar}
+            alt="avatar image"
+          />
         )}
         <DropzoneMessage />
       </label>

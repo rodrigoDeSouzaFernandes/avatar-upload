@@ -7,8 +7,14 @@ import AvatarEditor from "react-avatar-editor";
 import useCrop from "./useCrop";
 
 function Crop() {
-  const { file, setFile, editor, setEditorRef, setProfilePic, setImageCroppedOriginalSize } =
-    useContext(FileContext);
+  const {
+    file,
+    setFile,
+    editor,
+    setEditorRef,
+    setProfilePic,
+    setImageCroppedOriginalSize,
+  } = useContext(FileContext);
 
   const {
     scaleValue,
@@ -21,7 +27,7 @@ function Crop() {
     setFile,
     editor,
     setProfilePic,
-    setImageCroppedOriginalSize
+    setImageCroppedOriginalSize,
   });
 
   if (!file) {
@@ -32,6 +38,7 @@ function Crop() {
     <section className="crop">
       <div>
         <AvatarEditor
+          data-testid="avatar-editor"
           className="cropCanvas"
           width={113}
           height={113}
@@ -45,9 +52,9 @@ function Crop() {
       </div>
       <div className="cropSettings">
         <div className="inputs">
-          <label>Zoom {scaleValue}</label>
+          <label>Zoom ({scaleValue}x)</label>
           <input
-            style={{ width: "100%" }}
+            data-testid="input-zoom"
             type="range"
             value={scaleValue}
             name="points"
@@ -58,22 +65,22 @@ function Crop() {
           />
         </div>
         <div className="inputs">
-          <label>Rotate</label>
+          <label>Rotate ({rotation}°)</label>
           <input
-            style={{ width: "100%" }}
+            data-testid="input-rotation"
             type="range"
             value={rotation}
             name="points"
-            min="-180"
-            max="180"
+            min="0"
+            max="360"
             step="5"
             onChange={onRotationChange}
           />
         </div>
-        <button onClick={onCrop} className="btnSave">
+        <button onClick={onCrop} className="save-btn" data-testid="save-btn">
           Save
         </button>
-        <button className="closeBtn" onClick={onClose}>
+        <button className="close-btn" onClick={onClose} data-testid="close-btn">
           <CloseBtn />
         </button>
       </div>

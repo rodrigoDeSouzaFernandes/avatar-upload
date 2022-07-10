@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { IUseCrop } from "../../types/uploadFileInterfaces";
 
 function useCrop({
@@ -10,18 +10,24 @@ function useCrop({
   const [rotation, setRotation] = useState(0);
   const [scaleValue, setScaleValue] = useState(1);
 
-  const onRotationChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setRotation(Number(target.value));
-  };
+  const onRotationChange = useCallback(
+    ({ target }: ChangeEvent<HTMLInputElement>) => {
+      setRotation(Number(target.value));
+    },
+    [rotation]
+  );
 
   const onClose = () => {
     setFile(null);
   };
 
-  const onScaleChange = (scaleChangeEvent: ChangeEvent<HTMLInputElement>) => {
-    const scaleValue = parseFloat(scaleChangeEvent.target.value);
-    setScaleValue(scaleValue);
-  };
+  const onScaleChange = useCallback(
+    (scaleChangeEvent: ChangeEvent<HTMLInputElement>) => {
+      const scaleValue = parseFloat(scaleChangeEvent.target.value);
+      setScaleValue(scaleValue);
+    },
+    [scaleValue]
+  );
 
   const onCrop = () => {
     if (editor !== null) {

@@ -6,15 +6,14 @@ function CustomDownloadBtn({
   fileName,
 }: IDownloadBtnProps) {
   return (
-    <div className="downloadBtnContainer">
-      <a
-        className="downloadBtn"
-        href={imageCroppedOriginalSize}
-        download={fileName}
-      >
-        {children}
-      </a>
-    </div>
+    <a
+      className="downloadBtn"
+      href={imageCroppedOriginalSize}
+      download={fileName}
+      data-testid="button-download"
+    >
+      {children}
+    </a>
   );
 }
 

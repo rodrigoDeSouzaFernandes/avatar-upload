@@ -17,7 +17,7 @@ export interface IFileContext {
   setFile: Function;
   uploadFailed: Boolean;
   setUploadFailed: Function;
-  profilePic: string | undefined;
+  avatar: string | undefined;
   setProfilePic: Function;
   editor: AvatarEditor | null;
   setEditor: Function;

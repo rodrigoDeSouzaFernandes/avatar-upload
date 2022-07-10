@@ -4,7 +4,7 @@ import FileContext from "../../Context/FileContext";
 import Crop from "../Crop";
 function AvatarUpload() {
 
-  const { uploadFailed, file, profilePic, setProfilePic } =
+  const { uploadFailed, file, avatar, setProfilePic } =
     useContext(FileContext);
 
   return (
