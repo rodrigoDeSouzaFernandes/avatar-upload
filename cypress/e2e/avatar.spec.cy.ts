@@ -214,7 +214,7 @@ describe("Testing Delete image button", () => {
   })
 })
 
-describe.only("Testing download button", () => {
+describe("Testing download button", () => {
   beforeEach(() => {
     cy.visit('/')
 
@@ -234,10 +234,8 @@ describe.only("Testing download button", () => {
 
   it('should donwload the image', () => {
     const donwloadImageButton = cy.get('[data-testid="button-download"]');
+    donwloadImageButton.click();
 
-    cy.task('deleteFolder', 'cypress/downloads' )
-    // donwloadImageButton.click();
-
-    // cy.readFile('cypress/downloads/avatar.png')
+    cy.readFile('cypress/downloads/avatar.png')
   })
 })
