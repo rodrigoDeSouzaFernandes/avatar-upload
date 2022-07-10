@@ -10,14 +10,16 @@ function useDragAndDrop() {
     } else {
       const [uploadedFile] = acceptedFiles;
 
-      var asd = new FileReader();
-      asd.onload = function (e) {
+      console.log(JSON.stringify(uploadedFile))
+
+      const fileReader = new FileReader();
+      fileReader.onload = function (e) {
         setFile({
           ...uploadedFile,
           src: e.target?.result,
         });
       };
-      asd.readAsDataURL(uploadedFile);
+      fileReader.readAsDataURL(uploadedFile);
     }
   }, []);
 

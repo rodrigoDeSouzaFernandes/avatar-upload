@@ -24,7 +24,7 @@ function DragAndDrop() {
     }
 
     return (
-      <div className="defaultMessage">
+      <div className="default-message" data-testid="default-message">
         <div>
           <Image />
           <p>Organization Logo</p>
@@ -39,9 +39,9 @@ function DragAndDrop() {
   };
 
   return (
-    <section className="dropzone">
-      <label {...getRootProps()} htmlFor="click">
-        <input {...getInputProps()} id="click" />
+    <section className="dropzone" data-testid="dropzone">
+      <label {...getRootProps()} htmlFor="upload">
+        <input {...getInputProps()} id="upload" data-testid="file-upload" />
         {profilePic && (
           <img className="profile" src={profilePic} alt="Profile image" />
         )}

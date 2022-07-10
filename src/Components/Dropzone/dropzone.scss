@@ -42,7 +42,7 @@
   }
 }
 
-.defaultMessage {
+.default-message {
   grid-column: 2;
   display: flex;
   flex-direction: column;
@@ -124,7 +124,7 @@
     }
   }
 
-  .tryAgain {
+  .try-again {
     grid-area: tryagain;
     justify-self: start;
     align-self: start;
