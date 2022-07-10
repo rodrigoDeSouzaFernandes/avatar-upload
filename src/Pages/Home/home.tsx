@@ -6,17 +6,19 @@ import FileContext from "../../Context/FileContext";
 const Home = () => {
   const { imageCroppedOriginalSize } = useContext(FileContext);
   return (
-    <>
+    <main className="home">
       <AvatarUpload />
-      <div className="container">
-        <CustomDownloadBtn
-          imageCroppedOriginalSize={imageCroppedOriginalSize}
-          fileName="profilePic"
-        >
-          Download cropped image
-        </CustomDownloadBtn>
-      </div>
-    </>
+      {imageCroppedOriginalSize && (
+        <div className="container">
+          <CustomDownloadBtn
+            imageCroppedOriginalSize={imageCroppedOriginalSize}
+            fileName="profilePic"
+          >
+            Download cropped image
+          </CustomDownloadBtn>
+        </div>
+      )}
+    </main>
   );
 };
 
