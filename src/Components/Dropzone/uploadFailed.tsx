@@ -25,7 +25,7 @@ function UploadFailed() {
         Try Again
       </button>
       <button
-        className="closeBtn"
+        className="close-btn"
         data-testid="close-btn"
         onClick={handleClose}
       >

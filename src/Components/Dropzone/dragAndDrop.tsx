@@ -43,7 +43,12 @@ function DragAndDrop() {
       <label {...getRootProps()} htmlFor="upload">
         <input {...getInputProps()} id="upload" data-testid="file-upload" />
         {profilePic && (
-          <img className="profile" src={profilePic} alt="Profile image" />
+          <img
+            className="profile"
+            data-testid="profile"
+            src={profilePic}
+            alt="Profile image"
+          />
         )}
         <DropzoneMessage />
       </label>

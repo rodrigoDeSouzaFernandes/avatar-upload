@@ -1,7 +1,4 @@
-const
-  IMAGE1 = 'avatar1.jpg',
-  IMAGE2 = 'avatar2.jpg',
-  NOT_AN_IMAGE = 'avatar.json'
+import { IMAGE1, IMAGE2, NOT_AN_IMAGE } from '../utils/mockImages'
 
 describe('When loading the page', () => {
 
@@ -43,13 +40,27 @@ describe('When trying to upload a image file, should upload successfully', () =>
   })
 
   it('should have rotation input visible and active', () => {
-    const rotationInput = cy.get('[data-testid="input-rotation"]')
+    const rotationInput = cy.get('[data-testid="input-rotation"]');
     rotationInput.should('be.visible');
     rotationInput.should('be.enabled');
   })
+
+  it("should have a close button", () => {
+    const closeButton = cy.get('[data-testid="close-btn"]')
+    closeButton.should('be.visible');
+  })
+
+  it('should return return to dropzone by clicking on close button', () => {
+    const closeButton = cy.get('[data-testid="close-btn"]');
+    closeButton.should('be.visible');
+    closeButton.click();
+
+    const dropzone = cy.get('[data-testid="dropzone"]');
+    dropzone.should("exist");
+  })
 })
 
-describe('When trying to upload a file that is not an image', () => {
+describe('When trying to upload a file that is not an image, should give an erro', () => {
   beforeEach(() => {
     cy.visit('/')
 
@@ -82,7 +93,7 @@ describe('When trying to upload a file that is not an image', () => {
     closeButton.should('be.visible');
   })
 
-  it('should return return to dropzone by clicking on try again', () => {
+  it('should return return to dropzone by clicking on close button', () => {
     const closeButton = cy.get('[data-testid="close-btn"]');
     closeButton.should('be.visible');
     closeButton.click();
@@ -92,7 +103,7 @@ describe('When trying to upload a file that is not an image', () => {
   })
 })
 
-describe('When trying to upload a multiple files', () => {
+describe('When trying to upload a multiple files, should give an error', () => {
   beforeEach(() => {
     cy.visit('/')
 
@@ -132,5 +143,41 @@ describe('When trying to upload a multiple files', () => {
 
     const dropzone = cy.get('[data-testid="dropzone"]');
     dropzone.should("exist");
+  })
+})
+
+describe.only("When upload is successful", () => {
+
+  beforeEach(() => {
+    cy.visit('/')
+
+    const fileUploadInput = cy.get('[data-testid="file-upload"]');
+    fileUploadInput.should("exist")
+    fileUploadInput.attachFile(IMAGE2);
+  })
+
+  it("should allow zoom from 1 to 3 times", () => {
+    const zoomInput = cy.get('[data-testid="input-zoom"]');
+    zoomInput.should('exist')
+    zoomInput.invoke('val', 1.5).should('have.value', 1.5);
+    zoomInput.invoke('val', 0).should('have.value', 1);
+    zoomInput.invoke('val', 4).should('have.value', 3);
+  })
+
+  it("should allow rotation from 0 to 360 degrees", () => {
+    const rotationInput = cy.get('[data-testid="input-rotation"]');
+    rotationInput.should('exist')
+    rotationInput.invoke('val', 30).should('have.value', 30);
+    rotationInput.invoke('val', -45).should('have.value', 0);
+    rotationInput.invoke('val', 450).should('have.value', 360);
+  })
+
+  it('should crop the image by clicking on save button', () => {
+    const saveButton = cy.get('[data-testid="save-btn"]');
+    saveButton.should('exist');
+    saveButton.click();
+
+    const imageCropped = cy.get('[data-testid="profile"]');
+    imageCropped.should('be.visible')
   })
 })

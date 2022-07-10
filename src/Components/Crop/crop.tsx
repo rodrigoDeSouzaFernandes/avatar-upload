@@ -77,10 +77,10 @@ function Crop() {
             onChange={onRotationChange}
           />
         </div>
-        <button onClick={onCrop} className="btnSave">
+        <button onClick={onCrop} className="save-btn" data-testid="save-btn">
           Save
         </button>
-        <button className="closeBtn" onClick={onClose}>
+        <button className="close-btn" onClick={onClose} data-testid="close-btn">
           <CloseBtn />
         </button>
       </div>
