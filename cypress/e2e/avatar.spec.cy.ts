@@ -148,7 +148,7 @@ describe('When trying to upload a multiple files, should give an error', () => {
   })
 })
 
-describe('Testing drag and drop funcionality', () => {
+describe('Testing drag and drop functionality', () => {
   beforeEach(() => {
     cy.visit('/')
   })
