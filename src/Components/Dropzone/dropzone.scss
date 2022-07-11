@@ -1,9 +1,10 @@
 .base {
+  min-height: 177px;
   max-width: 553px;
-  height: 177px;
   background: var(--color-grey-1);
   border-radius: var(--border-radius-default);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 10px auto;
@@ -22,12 +23,13 @@
     width: 100%;
     height: 100%;
 
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 30px;
+    justify-content: center;
 
+    padding: 30px;
+    gap: 15px;
   }
 }
 
@@ -80,7 +82,7 @@
 }
 
 .failed {
-  color: var(--color-failed);
+  color: var(--color-red);
 }
 
 .uploadFailed {
@@ -88,19 +90,15 @@
 
   position: relative;
 
+  row-gap: 10px;
 
-  display: grid;
-  grid-template-areas:
-    'circle message'
-    'circle tryagain';
 
-  column-gap: 32px;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
   padding: 32px;
 
   .failed {
     grid-area: message;
-    align-self: end;
     padding-bottom: 5px;
     font-weight: 400;
   }
@@ -127,7 +125,7 @@
   .try-again {
     grid-area: tryagain;
     justify-self: start;
-    align-self: start;
+
     font-weight: 500;
     text-decoration: underline;
     background: none;
@@ -137,4 +135,41 @@
 
 .avatar {
   border-radius: 50%;
+}
+
+@media screen and (min-width: 415px) {
+  .base {
+    flex-direction: row;
+  }
+
+  .dropzone {
+    @extend .base;
+
+    label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      justify-content: space-around;
+      padding: 10px 30px;
+    }
+  }
+
+  .uploadFailed {
+    display: grid;
+    grid-template-areas:
+      'circle message'
+      'circle tryagain';
+
+    column-gap: 32px;
+    row-gap: 0;
+
+    .try-again {
+      align-self: start;
+    }
+
+    .failed {
+      align-self: end;
+    }
+  }
+
 }

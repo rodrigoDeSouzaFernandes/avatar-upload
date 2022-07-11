@@ -1,7 +1,7 @@
 .downloadBtn {
   font-size: 14px;
-  background-color: #0a66c2;
-  color: white;
+  background-color: var(--color-blue);
+  color: var(--color-white);
   text-decoration: none;
   padding: 10px 20px;
   border-radius: var(--border-radius-default);
@@ -10,8 +10,8 @@
   transition: .3s;
 
   &:hover {
-    color: #0a66c2;
-    background: white;
-    border: 2px solid #0a66c2;
+    color: var(--color-blue);
+    background:white;
+    border: 2px solid var(--color-blue);
   }
 }

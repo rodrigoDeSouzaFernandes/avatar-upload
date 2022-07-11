@@ -39,7 +39,7 @@ function Crop() {
       <div>
         <AvatarEditor
           data-testid="avatar-editor"
-          className="cropCanvas"
+          className="crop-canvas"
           width={113}
           height={113}
           image={file.src}
@@ -50,7 +50,7 @@ function Crop() {
           ref={setEditorRef}
         />
       </div>
-      <div className="cropSettings">
+      <div className="crop-settings">
         <div className="inputs">
           <label>Zoom ({scaleValue}x)</label>
           <input
