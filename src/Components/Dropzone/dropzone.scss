@@ -13,6 +13,8 @@
 .dropzone {
   @extend .base;
 
+
+
   outline: var(--dashed-border-default);
   position: relative;
   cursor: pointer;
@@ -27,7 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    min-height: 177px;
     padding: 30px;
     gap: 15px;
   }
