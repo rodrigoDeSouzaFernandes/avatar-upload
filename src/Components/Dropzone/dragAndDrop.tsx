@@ -25,7 +25,7 @@ function DragAndDrop() {
 
     return (
       <div className="default-message" data-testid="default-message">
-        <div>
+        <div className="org-logo">
           <Image />
           <p>Organization Logo</p>
         </div>
