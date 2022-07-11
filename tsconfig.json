@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["cypress", "cypress-file-upload", "baseUrl"]
+    "types": ["cypress", "cypress-file-upload"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
