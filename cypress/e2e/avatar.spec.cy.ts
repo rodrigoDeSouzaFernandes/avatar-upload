@@ -148,6 +148,25 @@ describe('When trying to upload a multiple files, should give an error', () => {
   })
 })
 
+describe('Testing drag and drop funcionality', () => {
+  beforeEach(() => {
+    cy.visit('/')
+  })
+
+  it('should be in the document', () => {
+    const dragAndDropElement = cy.get('[data-testid="dragndrop"]')
+    dragAndDropElement.should('exist')
+  })
+
+  it('should upload an image by dragging and dropping the file', () => {
+    const dragAndDropElement = cy.get('[data-testid="dragndrop"]')
+    dragAndDropElement.attachFile(IMAGE1, { subjectType: 'drag-n-drop' })
+
+    const editor = cy.get('[data-testid="avatar-editor"]');
+    editor.should('be.visible')
+  })
+})
+
 describe("When upload is successful", () => {
 
   beforeEach(() => {
@@ -239,3 +258,4 @@ describe("Testing download button", () => {
     cy.readFile('cypress/downloads/avatar.png')
   })
 })
+

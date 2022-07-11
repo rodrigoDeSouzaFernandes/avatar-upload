@@ -40,7 +40,7 @@ function DragAndDrop() {
 
   return (
     <section className="dropzone" data-testid="dropzone">
-      <label {...getRootProps()} htmlFor="upload">
+      <label {...getRootProps()} htmlFor="upload" data-testid="dragndrop">
         <input {...getInputProps()} id="upload" data-testid="file-upload" />
         {avatar && (
           <img
