@@ -6,6 +6,7 @@
 
   justify-content: start;
 }
+
 .crop-canvas {
   border-radius: 50%;
 }
@@ -46,7 +47,7 @@
 
   .save-btn {
     background-color: var(--color-grey-5);
-    color: white;
+    color: var(--color-white);
     border-radius: 16px;
     border: none;
     width: 109px;
