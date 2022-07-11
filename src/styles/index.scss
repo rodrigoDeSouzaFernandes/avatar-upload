@@ -1,8 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @import './common.scss';
+@import '../Components/Dropzone/dropzone.scss';
+@import '../Components/Crop/crop.scss';
+@import '../Components/CustomDownloadBtn/customDownloadBtn.scss';
+@import '../Components/ButtonContainer/buttonContainer.scss';
 
+@import '../Pages/Home/home.scss';
 
+:root {
+  --color-grey-1: #F2F5F8;
+  --color-grey-2: #C7CDD3;
+  --color-grey-3: #677489;
+  --color-grey-4: #495567;
+  --color-grey-5: #3D485F;
 
-// # variables
-// :root {
+  --color-red: #C64D32;
 
-// }
+  --color-blue: #0a66c2;
+
+  --color-white: #fff;
+
+  --border-radius-default: 8px;
+
+  --dashed-border-default: var(--color-grey-2) dashed 2px;
+}

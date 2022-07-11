@@ -1,5 +1,15 @@
 body {
   margin: unset;
+  font-family: 'Inter', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  font-size: 14px;
+  text-align: center;
 }
 
 * {
@@ -11,13 +21,39 @@ body {
 .container {
   margin: 0 auto;
   max-width: 600px;
-  padding: 2em;
+  padding: .5rem 2em;
+}
+
+.close-btn {
+  position: absolute;
+  top: 32px;
+  right: 28px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 3px;
+    color: var(--color-grey-3);
+  }
 }
 
 @media screen and (min-width: 900px) {
   .container {
     margin: 0 auto;
     max-width: 1200px;
-    padding: 4em 2em;
+    padding: .5rem 2em;
   }
+}
+
+input[type=range] {
+  height: 4px;
+  margin: 5px 0;
+  width: 100%;
+  background-color: transparent;
 }
